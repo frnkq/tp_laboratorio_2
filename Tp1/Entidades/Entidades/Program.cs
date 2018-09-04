@@ -10,18 +10,13 @@ namespace Entidades
     {
         static void Main(string[] args)
         {
-            Numero n1 = new Numero("82");
-            Numero n2 = new Numero(4);
-            Numero zero = new Numero(0);
+            Numero n1 = new Numero("");
 
-            double suma = n1 + n2;
-            double division = n1 / n2;
-            double failureDivision = n1 / zero;
-
-            Console.WriteLine("Suma {0} division {1} failureDivision {2}", suma, division, failureDivision);
-
-
-            Console.ReadKey();
+            String bin = n1.DecimalBinario("9009090");
+            String dec = n1.BinarioDecimal("1110000100");
+            Console.WriteLine("dec: "+dec);
+                        
+            Console.ReadLine();
         }
     }
 }
