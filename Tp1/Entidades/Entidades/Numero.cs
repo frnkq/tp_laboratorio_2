@@ -30,7 +30,7 @@ namespace Entidades
         {
             set
             {
-                numero = (double)ValidarNumero(value);
+                numero = ValidarNumero(value);
             }
         }
 
@@ -73,7 +73,7 @@ namespace Entidades
                 if(c != '0' && c != '1')
                     return "Valor invalido";
 
-            string numero = 0;
+            double numero = 0;
             for (int i = 0; i < binario.Length; i++)
             {
                 int digito = int.Parse(binario.ElementAt(i).ToString());
@@ -92,30 +92,12 @@ namespace Entidades
             if (numero.Equals((double)0))
                 return numero.ToString();
      
-            bool isNegative = false;
             string binary = "";
-            while (numero != 0)
+            while (numero > 0)
             {
-                binary = (numero % 2).ToString() + binary;
-                if (numero > 0)
-                {
-                    numero = Math.Floor((double)numero / 2);
-                }
-                else
-                {
-                    isNegative = true;
-                    numero = Math.Ceiling((double)numero / 2);
-                }
-                        
+                binary = (Math.Round(numero) % 2).ToString() + binary;
+                numero = Math.Floor((double)numero / 2);            
             }
-
-            //cleanup of excessive hyphens
-            if (isNegative)
-            {
-                binary = binary.Replace("-", String.Empty);
-                binary = "-" + binary;
-            }
-
             return binary;
         }
 
@@ -128,9 +110,9 @@ namespace Entidades
         public string DecimalBinario(string numero)
         {
             double number;
-            if (double.TryParse(numero, NumberStyles.Float, CultureInfo.CurrentCulture, out number))
+            if (double.TryParse(numero, out number))
             {
-                return DecimalBinario(double.Parse(numero));
+                return DecimalBinario(number);
             }   
             return "Valor invalido";
   
