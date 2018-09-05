@@ -30,10 +30,7 @@ namespace Entidades
         {
             set
             {
-                if (ValidarNumero(value) != null)
-                    numero = (double)ValidarNumero(value);
-                else
-                    numero = 0;
+                numero = (double)ValidarNumero(value);
             }
         }
 
@@ -46,10 +43,7 @@ namespace Entidades
         public Numero(string numero)
         {
             //TODO: validacion?
-            if (ValidarNumero(numero) != null)
                 this.numero = (double)ValidarNumero(numero);
-            else
-                this.numero = 0;
         }
 
         /// <summary>
@@ -57,7 +51,7 @@ namespace Entidades
         /// </summary>
         /// <param name="strNumero"></param>
         /// <returns>El valor del parametro en formato double si este es numerico, 0 si no lo es</returns>
-        private double? ValidarNumero(string strNumero)
+        private double ValidarNumero(string strNumero)
         {
             double number;
             if (double.TryParse(strNumero, NumberStyles.AllowDecimalPoint | NumberStyles.AllowTrailingSign, 
@@ -65,7 +59,7 @@ namespace Entidades
             {
                 return number;
             }
-            return null;
+            return 0;
         }
 
         /// <summary>
@@ -75,23 +69,16 @@ namespace Entidades
         /// <returns>Devuelve el numero decimal que representa el binario, en formato string</returns>
         public string BinarioDecimal(string binario)
         {
-            bool converted = false;
-            double numero = 0;
+            foreach(char c in binario)
+                if(c != '0' && c != '1')
+                    return "Valor invalido";
 
-            double? binary = ValidarNumero(binario);
-            if(binary != null)
+            string numero = 0;
+            for (int i = 0; i < binario.Length; i++)
             {
-                for (int i = 0; i < binario.Length; i++)
-                {
-                    int digito = int.Parse(binario.ElementAt(i).ToString());
-                    numero += digito * Math.Pow(2, binario.Length - i - 1);
-                }
+                int digito = int.Parse(binario.ElementAt(i).ToString());
+                numero += digito * Math.Pow(2, binario.Length - i - 1);
             }
-            else
-            {
-                return "Valor invalido";
-            }
-
             return numero.ToString();
         }
 
@@ -100,42 +87,37 @@ namespace Entidades
         /// </summary>
         /// <param name="numero">Numero decimal a ser convertido en binario</param>
         /// <returns>Devuelve el numero binario que representa al decimal, en formato string</returns>
-        public string DecimalBinario(double? numero)
+        public string DecimalBinario(double numero)
         {
-            double? resto;
-            string retorno = "Valor invalido";
-            string[] splittedDecimal = new string[2];
-            string binary = "";
+            if (numero.Equals((double)0))
+                return numero.ToString();
+     
             bool isNegative = false;
-            if (numero != null)
+            string binary = "";
+            while (numero != 0)
             {
-                retorno = "";
-                if (numero.Equals((double)0))
-                    retorno = "0" ;
-
-                while (numero > 0 || numero < 0)
+                binary = (numero % 2).ToString() + binary;
+                if (numero > 0)
                 {
-                    resto = numero % 2;
-                    binary = binary + "" + resto;
-                    if (numero > 0)
-                        numero = Math.Floor((double)numero / 2);
-                    else
-                        isNegative = true;
-                        numero = Math.Ceiling((double)numero / 2);
-
-
+                    numero = Math.Floor((double)numero / 2);
                 }
-                for (int i = binary.Length - 1; i >= 0; i--)
+                else
                 {
-                    retorno = retorno + binary.ElementAt(i);
+                    isNegative = true;
+                    numero = Math.Ceiling((double)numero / 2);
                 }
-                retorno = retorno.Replace("-", String.Empty);
-                if (isNegative)
-                    retorno = "-" + retorno;
+                        
             }
-            return retorno;
-        }
 
+            //cleanup of excessive hyphens
+            if (isNegative)
+            {
+                binary = binary.Replace("-", String.Empty);
+                binary = "-" + binary;
+            }
+
+            return binary;
+        }
 
 
         /// <summary>
@@ -145,7 +127,13 @@ namespace Entidades
         /// <returns>Devuelve el numero binario que representa al decimal, en formato string</returns>
         public string DecimalBinario(string numero)
         {
-            return DecimalBinario(ValidarNumero(numero));
+            double number;
+            if (double.TryParse(numero, NumberStyles.Float, CultureInfo.CurrentCulture, out number))
+            {
+                return DecimalBinario(double.Parse(numero));
+            }   
+            return "Valor invalido";
+  
         }
 
         /**Operators**/

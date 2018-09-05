@@ -12,9 +12,8 @@ namespace Entidades
         {
             Numero n1 = new Numero("");
 
-            String bin = n1.DecimalBinario("9009090");
-            String dec = n1.BinarioDecimal("1110000100");
-            Console.WriteLine("dec: "+dec);
+            String bin = n1.BinarioDecimal("1010");
+            Console.WriteLine("dec: "+bin);
                         
             Console.ReadLine();
         }
