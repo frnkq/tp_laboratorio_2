@@ -23,7 +23,7 @@ using System.Globalization;
 
 namespace Entidades
 {
-    class Numero
+    public class Numero
     {
         private double numero;
         private string SetNumero
