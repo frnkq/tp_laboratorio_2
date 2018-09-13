@@ -5,22 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 
-//BASIC and horrible dec to bin
-//while (numero > 0 || numero < 0)
-//{
-//    resto = numero % 2;
-//    binary = binary + "" + resto;
-//    if (numero > 0)
-//        numero = Math.Floor((double)numero / 2);
-//    else
-//        numero = Math.Ceiling((double)numero / 2);
-//}
-////reverts the string as 'binary' is backwards
-//for (int i = binary.Length - 1; i >= 0; i--)
-//{
-//    retorno = retorno + binary.ElementAt(i);
-//}
-
 namespace Entidades
 {
     public class Numero
