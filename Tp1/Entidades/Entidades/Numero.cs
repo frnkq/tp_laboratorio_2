@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
-
+/// <summary>
+/// @Franco Canevali
+/// </summary>
 namespace Entidades
 {
     public class Numero
@@ -26,19 +28,18 @@ namespace Entidades
 
         public Numero(string numero)
         {
-            //TODO: validacion?
-                this.numero = (double)ValidarNumero(numero);
+            this.numero = (double)ValidarNumero(numero);
         }
 
         /// <summary>
         /// Valida que el valor recibido sea numerico y lo retorna en formato double, de no ser numerico, retorna 0
         /// </summary>
-        /// <param name="strNumero"></param>
+        /// <param name="strNumero">Numero a analizar</param>
         /// <returns>El valor del parametro en formato double si este es numerico, 0 si no lo es</returns>
         private double ValidarNumero(string strNumero)
         {
             double number;
-            if (double.TryParse(strNumero, NumberStyles.AllowDecimalPoint | NumberStyles.AllowTrailingSign, 
+            if (double.TryParse(strNumero, NumberStyles.AllowDecimalPoint , 
                 CultureInfo.CurrentCulture, out number))
             {
                 return number;
@@ -114,7 +115,7 @@ namespace Entidades
         public static double operator /(Numero n1, Numero n2)
         {
             if (n2.numero == 0)
-                return -1; //TODO: change this value
+                return 0; //TODO: change this value
             return n1.numero / n2.numero;
         }
         public static double operator +(Numero n1, Numero n2)
