@@ -24,13 +24,13 @@ namespace Entidades_2018
         /// Producto
         /// </summary>
         /// <param name="marca">Marca del producto</param>
-        /// <param name="codigoDeBarras">Codigo de barras del producto</param>
+        /// <param name="patente">Codigo de barras del producto</param>
         /// <param name="colorPrimarioEmpaque">Color primario del empaque del empaque</param>
-        public Producto(EMarca marca, string codigoDeBarras, ConsoleColor colorPrimarioEmpaque)
+        public Producto(EMarca marca, string patente, ConsoleColor color)
         {
             this.marca = marca;
-            this.codigoDeBarras = codigoDeBarras;
-            this.colorPrimarioEmpaque = colorPrimarioEmpaque;
+            this.codigoDeBarras = patente;
+            this.colorPrimarioEmpaque = color;
         }
 
         /// <summary>

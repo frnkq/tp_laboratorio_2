@@ -17,11 +17,11 @@ namespace Entidades_2018
         /// Por defecto, TIPO será ENTERA
         /// </summary>
         /// <param name="marca">Marca de la leche</param>
-        /// <param name="codigoDeBarras">Codigo de barras de la leche</param>
+        /// <param name="patente">Codigo de barras de la leche</param>
         /// <param name="colorPrimarioEmpaque">Color primario del empaque de la leche</param>
         /// 
-        public Leche(Producto.EMarca marca, string codigoDeBarras, ConsoleColor colorPrimarioEmpaque)
-            : base(marca, codigoDeBarras, colorPrimarioEmpaque)
+        public Leche(Producto.EMarca marca, string patente, ConsoleColor colorPrimarioEmpaque)
+            : base(marca, patente, colorPrimarioEmpaque)
         {
             tipo = ETipo.Entera;
         }
@@ -29,11 +29,11 @@ namespace Entidades_2018
         /// Constructor de Leche con el agregado del tipo de leche
         /// </summary>
         /// <param name="marca">Marca de la leche</param>
-        /// <param name="codigoDeBarras">Codigo de barras de la leche</param>
+        /// <param name="patente">Codigo de barras de la leche</param>
         /// <param name="colorPrimarioEmpaque">Color primario del empaque de la leche</param>
         /// <param name="tipo">Tipo de leche</param>
-        public Leche(Producto.EMarca marca, string codigoDeBarras, ConsoleColor color, Leche.ETipo tipo)
-            :base(marca, codigoDeBarras, color)
+        public Leche(Producto.EMarca marca, string patente, ConsoleColor color, Leche.ETipo tipo)
+            :base(marca, patente, color)
         {
             this.tipo = tipo;
         }

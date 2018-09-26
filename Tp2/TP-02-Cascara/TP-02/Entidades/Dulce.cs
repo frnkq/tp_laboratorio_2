@@ -13,9 +13,9 @@ namespace Entidades_2018
         /// </summary>
         /// <param name="marca">Marca del dulce</param>
         /// <param name="codigoDeBarras">Codigo de barras del dulce</param>
-        /// <param name="colorPrimarioEmpaque">Color primario del empaque del dulce</param>
-        public Dulce(Producto.EMarca marca, string codigoDeBarras, ConsoleColor colorPrimarioEmpaque)
-            :base(marca, codigoDeBarras, colorPrimarioEmpaque)
+        /// <param name="color">Color primario del empaque del dulce</param>
+        public Dulce(Producto.EMarca marca, string patente, ConsoleColor color)
+            :base(marca, patente, color)
         {
         }
 

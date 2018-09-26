@@ -12,10 +12,10 @@ namespace Entidades_2018
         /// Snacks
         /// </summary>
         /// <param name="marca">Marca del snack</param>
-        /// <param name="codigoDeBarras">Codigo de barras del snack</param>
-        /// <param name="colorPrimarioEmpaque">Color primario del empaque del snack</param>
-        public Snacks(Producto.EMarca marca, string codigoDeBarras, ConsoleColor colorPrimarioEmpaque)
-            : base(marca, codigoDeBarras, colorPrimarioEmpaque)
+        /// <param name="patente">Codigo de barras del snack</param>
+        /// <param name="color">Color primario del empaque del snack</param>
+        public Snacks(Producto.EMarca marca, string patente, ConsoleColor color)
+            : base(marca, patente, color)
         {
         }
         /// <summary>
