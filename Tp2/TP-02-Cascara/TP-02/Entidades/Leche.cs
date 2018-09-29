@@ -41,7 +41,7 @@ namespace Entidades_2018
         /// <summary>
         /// Las leches tienen 20 calorías
         /// </summary>
-        public override short CantidadCalorias
+        protected override short CantidadCalorias
         {
             get
             {
@@ -50,7 +50,7 @@ namespace Entidades_2018
         }
        
         /// <summary>
-        /// Publica todos los datos deol producto
+        /// Publica todos los datos del producto
         /// </summary>
         /// <returns>Los datos del producto</returns>
         public override sealed string Mostrar()
@@ -59,8 +59,9 @@ namespace Entidades_2018
 
             sb.AppendLine("LECHE");
             sb.AppendLine((string)this);
-            sb.AppendLine(String.Format("CALORIAS : {0}", this.CantidadCalorias));
-            sb.AppendLine("TIPO : " + this.tipo);
+            sb.AppendLine(String.Format("CALORIAS: {0}TIPO: {1}", 
+                this.CantidadCalorias,this.tipo.ToString()));
+            sb.AppendLine();
             sb.AppendLine("---------------------");
 
             return sb.ToString();

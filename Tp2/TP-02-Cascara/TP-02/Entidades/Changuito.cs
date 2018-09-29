@@ -18,7 +18,7 @@ namespace Entidades_2018
             Dulce, Leche, Snacks, Todos
         }
 
-        #region "Constructores"
+  
         private Changuito()
         {
             this.productos = new List<Producto>();
@@ -27,9 +27,7 @@ namespace Entidades_2018
         {
             this.espacioDisponible = espacioDisponible;
         }
-        #endregion
 
-        #region "Sobrecargas"
         /// <summary>
         /// Muestro el Changuito y TODOS los Productos
         /// </summary>
@@ -38,9 +36,7 @@ namespace Entidades_2018
         {
             return Changuito.Mostrar(this, ETipo.Todos);
         }
-        #endregion
-
-        #region "Métodos"
+ 
 
         /// <summary>
         /// Expone los datos del elemento y su lista (incluidas sus herencias)
@@ -54,7 +50,8 @@ namespace Entidades_2018
             StringBuilder sb = new StringBuilder();
 
             sb.AppendFormat("Tenemos {0} lugares ocupados de un total de {1} disponibles", c.productos.Count, c.espacioDisponible);
-            sb.AppendLine("");
+            sb.AppendLine();
+            //agregar al stringbuilder los productos, separados por ETipo tipo
             foreach (Producto prod in c.productos)
             {
                 switch (tipo)
@@ -86,9 +83,8 @@ namespace Entidades_2018
 
             return sb.ToString();
         }
-        #endregion
 
-        #region "Operadores"
+
         /// <summary>
         /// Agregará un elemento a la lista
         /// </summary>
@@ -130,6 +126,5 @@ namespace Entidades_2018
 
             return c;
         }
-        #endregion
     }
 }
