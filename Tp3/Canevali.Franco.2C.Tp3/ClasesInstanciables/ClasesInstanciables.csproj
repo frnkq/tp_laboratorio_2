@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{68743B89-E289-4ABB-8D4A-5C40A9E7A363}</ProjectGuid>
+    <ProjectGuid>{CDA42F00-8C45-4A82-B14D-81A73671C000}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Entidades</RootNamespace>
-    <AssemblyName>Entidades</AssemblyName>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClasesInstanciables</RootNamespace>
+    <AssemblyName>ClasesInstanciables</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,13 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculadora.cs" />
-    <Compile Include="Numero.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Alumno.cs" />
+    <Compile Include="Jornada.cs" />
+    <Compile Include="Profesor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Universidad.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\ClasesAbstractas\ClasesAbstractas.csproj">
+      <Project>{5b243d68-5e46-478f-b693-49e5b883c39f}</Project>
+      <Name>ClasesAbstractas</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
