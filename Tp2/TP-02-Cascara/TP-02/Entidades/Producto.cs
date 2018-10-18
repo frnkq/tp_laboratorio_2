@@ -15,10 +15,10 @@ namespace Entidades_2018
         {
             Serenisima, Campagnola, Arcor, Ilolay, Sancor, Pepsico
         }
-
-        EMarca marca;
-        string codigoDeBarras;
-        ConsoleColor colorPrimarioEmpaque;
+        
+        private EMarca marca;
+        private string codigoDeBarras;
+        private ConsoleColor colorPrimarioEmpaque;
 
         /// <summary>
         /// Producto
@@ -36,23 +36,22 @@ namespace Entidades_2018
         /// <summary>
         /// ReadOnly: Retornará la cantidad de calorias del producto
         /// </summary>
-        public virtual short CantidadCalorias
+        protected abstract short CantidadCalorias
         {
-            get
-            {
-                return this.CantidadCalorias;
-            }
+            get;
+          
         }
 
         /// <summary>
         /// Publica todos los datos del Producto.
         /// </summary>
         /// <returns>Los datos del producto</returns>
-        public virtual string Mostrar()
-        {
-            return (string)this;
-        }
+        public abstract string Mostrar();
 
+        /// <summary>
+        /// Recopila los datos deol producto
+        /// </summary>
+        /// <param name="p">Productos del cual se recopilaran los datos</param>
         public static explicit operator string(Producto p)
         {
             StringBuilder sb = new StringBuilder();

@@ -17,7 +17,7 @@ namespace TP_02_2018
             Console.SetWindowSize(Console.LargestWindowWidth / 2, Console.LargestWindowHeight - 2);
 
             // Nombre del alumno
-            Console.Title = "Franco Canevali";
+            Console.Title = "Franco Canevali (2ºC)";
 
             Changuito changoDeCompras = new Changuito(6);
 
@@ -44,6 +44,7 @@ namespace TP_02_2018
             Console.WriteLine(changoDeCompras.ToString());
             Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->");
             Console.ReadKey();
+            Console.Beep(32766, 1000);
             Console.Clear();
 
             // Quito un item y muestro
@@ -52,6 +53,7 @@ namespace TP_02_2018
             Console.WriteLine(changoDeCompras.ToString());
             Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->");
             Console.ReadKey();
+            Console.Beep();
             Console.Clear();
 
 
@@ -59,17 +61,20 @@ namespace TP_02_2018
             Console.WriteLine(Changuito.Mostrar(changoDeCompras, Changuito.ETipo.Leche));
             Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->");
             Console.ReadKey();
+            Console.Beep();
             Console.Clear();
 
             // Muestro solo Dulces
             Console.WriteLine(Changuito.Mostrar(changoDeCompras, Changuito.ETipo.Dulce));
             Console.WriteLine("<-----------PRESIONE UNA TECLA PARA CONTINUAR----------->");
             Console.ReadKey();
+            Console.Beep();
             Console.Clear();
 
             // Muestro solo Snacks
             Console.WriteLine(Changuito.Mostrar(changoDeCompras, Changuito.ETipo.Snacks));
             Console.WriteLine("<-------------PRESIONE UNA TECLA PARA SALIR------------->");
+            Console.Beep(30000, 1500);
             Console.ReadKey();
 
         }

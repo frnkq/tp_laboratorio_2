@@ -17,11 +17,12 @@ namespace Entidades_2018
         public Snacks(Producto.EMarca marca, string patente, ConsoleColor color)
             : base(marca, patente, color)
         {
+
         }
         /// <summary>
         /// Los snacks tienen 104 calorías
         /// </summary>
-        public override short CantidadCalorias
+        protected override short CantidadCalorias
         {
             get
             {
@@ -30,7 +31,7 @@ namespace Entidades_2018
         }
 
         /// <summary>
-        /// Publica todos los datos deol producto
+        /// Publica todos los datos del producto
         /// </summary>
         /// <returns>Los datos del producto</returns>
         public override sealed string Mostrar()
