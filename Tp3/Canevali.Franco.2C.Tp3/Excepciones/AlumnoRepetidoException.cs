@@ -11,11 +11,5 @@ namespace Excepciones
         public AlumnoRepetidoException()
         {
         }
-        public AlumnoRepetidoException(string message) : base(message)
-        {
-        }
-        public AlumnoRepetidoException(string message, Exception inner) : base(message, inner)
-        {
-        }
     }
 }

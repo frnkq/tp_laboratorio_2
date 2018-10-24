@@ -11,6 +11,10 @@ namespace Excepciones
         public DniInvalidoException()
         {
         }
+        public DniInvalidoException(Exception e) : base("removethis", e)
+        {
+
+        }
         public DniInvalidoException(string message) : base(message)
         {
         }

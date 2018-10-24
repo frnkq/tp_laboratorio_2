@@ -8,11 +8,11 @@ namespace ClasesAbstractas
 {
     public abstract class Universitario : Persona
     {
-        #region Fields
+        #region Campos
         private int legajo;
         #endregion
 
-        #region Methods
+        #region Metodos
         public Universitario()
         {
 

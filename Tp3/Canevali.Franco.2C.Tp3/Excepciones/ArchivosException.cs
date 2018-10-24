@@ -8,14 +8,9 @@ namespace Excepciones
 {
     class ArchivosException : Exception
     {
-        public ArchivosException()
+        public ArchivosException(Exception innerException) : base("something", innerException)
         {
-        }
-        public ArchivosException(string message) : base(message)
-        {
-        }
-        public ArchivosException(string message, Exception inner) : base(message, inner)
-        {
+
         }
     }
 }

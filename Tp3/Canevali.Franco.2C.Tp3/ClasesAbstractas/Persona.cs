@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace ClasesAbstractas
 {
-    public enum ENacionalidad
-    {
-        Argentino,
-        Extranjero
-    }
+
     public abstract class Persona
     {
-        #region Fields
+        #region Campos
         private string apellido;
         private string nombre;
         private int dni;
         private ENacionalidad nacionalidad;
         #endregion
 
-        #region Properties
+        #region Propiedades
         public string Apellido
         {
             get { return this.apellido;  }
@@ -52,7 +48,7 @@ namespace ClasesAbstractas
         }
         #endregion
 
-        #region Methods
+        #region Metodos
         public Persona()
         {
 
@@ -95,6 +91,14 @@ namespace ClasesAbstractas
         private string ValidarNombreYApellido(string dato)
         {
             return dato;
+        }
+        #endregion
+
+        #region Tipos anidados
+        public enum ENacionalidad
+        {
+            Argentino,
+            Extranjero
         }
         #endregion
     }
