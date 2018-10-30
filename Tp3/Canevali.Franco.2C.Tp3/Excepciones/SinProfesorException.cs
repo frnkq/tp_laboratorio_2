@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    class SinProfesorException : Exception
+    public class SinProfesorException : Exception
     {
         public SinProfesorException()
         {

@@ -31,7 +31,7 @@ namespace ClasesInstanciables
 
         }
 
-        protected string ParticiparEnClase()
+        protected override string ParticiparEnClase()
         {
             StringBuilder sb = new StringBuilder();
 

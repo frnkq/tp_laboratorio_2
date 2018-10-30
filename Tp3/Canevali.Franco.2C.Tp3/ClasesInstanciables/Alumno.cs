@@ -35,7 +35,7 @@ namespace ClasesInstanciables
             this.estadoCuenta = estadoCuenta;
         }
 
-        protected string ParticiparEnClase()
+        protected override string ParticiparEnClase()
         {
             StringBuilder sb = new StringBuilder();
 
