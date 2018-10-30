@@ -36,12 +36,16 @@ namespace ClasesAbstractas
             this.legajo = legajo;
         }
 
+        /// <summary>
+        /// Devuelve todos los datos del universitario, utilizando base.ToString() sumandole los campos propios
+        /// de universitario (legajo)
+        /// </summary>
+        /// <returns>Todos los datos del universitario</returns>
         protected virtual string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine("Universitario");
-            sb.AppendLine(String.Format("Legajo n°: {0}", this.legajo);
+            sb.AppendLine(String.Format("Legajo n°: {0}", this.legajo));
 
             return sb.ToString();
         }

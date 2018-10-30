@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Archivos
 {
-    class Xml<T> : IArchivo<T>
+    public class Xml<T> : IArchivo<T>
     {
         public bool Guardar(string archivo, T datos)
         {
             throw new NotImplementedException();
         }
 
-        public bool Leer(string archivo, T datos)
+        public bool Leer(string archivo, out T datos)
         {
             throw new NotImplementedException();
         }

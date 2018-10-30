@@ -137,7 +137,7 @@ namespace ClasesInstanciables
         #region Tipos Anidados
         public enum EClases
         {
-            Programacion,
+            Programacion = 0,
             Laboratorio,
             Legislacion,
             SPD

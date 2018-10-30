@@ -35,32 +35,65 @@ namespace ClasesInstanciables
             this.estadoCuenta = estadoCuenta;
         }
 
+        /// <summary>
+        /// Rretornará la cadena "TOMA CLASE DE " junto al nombre de la clase que toma.
+        /// </summary>
+        /// <returns></returns>
         protected override string ParticiparEnClase()
         {
-            StringBuilder sb = new StringBuilder();
-
-            return sb.ToString();
+            return String.Format("TOMA CLASE DE {0}", this.claseQueToma.ToString());
         }
-        protected string MostrarDatos()
+
+        /// <summary>
+        /// Devuelve todos los datos del alumno en un string
+        /// </summary>
+        /// <returns>Todos los datos del alumno en un string</returns>
+        protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-
+            sb.AppendLine("Alumno");
+            sb.AppendLine(base.MostrarDatos());
+            sb.AppendLine(this.ToString());
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Devuelve todos los datos del alumno en un string
+        /// </summary>
+        /// <returns>Todos los datos del alumno en un string</returns>
         public override string ToString()
         {
-            return this.MostrarDatos();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(String.Format("Clase que toma: {0}", this.claseQueToma.ToString()));
+            sb.AppendLine(String.Format("Estado de cuenta: {0}", this.estadoCuenta.ToString()));
+            return sb.ToString();
         }
 
+        /// <summary>
+        /// Un Alumno será igual a un EClase si toma esa clase y su estado de cuenta no es Deudor
+        /// </summary>
+        /// <param name="a">Alumno a analizar con EClase 'clase' y su estado de cuenta</param>
+        /// <param name="clase">Clase que se utilizara para analizar al alumno 'a'</param>
+        /// <returns>True si el alumno toma esa clase y estadoCuenta no es 'EEstadoDeCuenta.Deudor'</returns>
         public static bool operator ==(Alumno a, Universidad.EClases clase)
         {
-            return true;
+            if(a.claseQueToma == clase && 
+                a.estadoCuenta != Alumno.EEstadoDeCuenta.Deudor)
+            {
+                return true;
+            }
+            return false;
         }
 
+        /// <summary>
+        /// Un Alumno será distinto a un EClase sólo si no toma esa clase
+        /// </summary>
+        /// <param name="a">Alumno a analizar con EClase 'clase'</param>
+        /// <param name="clase">Clase que se utilizara para analizar al alumno 'a'</param>
+        /// <returns></returns>
         public static bool operator !=(Alumno a, Universidad.EClases clase)
         {
-            return !(a==clase);
+            return !(a.claseQueToma == clase);
         }
         #endregion
 

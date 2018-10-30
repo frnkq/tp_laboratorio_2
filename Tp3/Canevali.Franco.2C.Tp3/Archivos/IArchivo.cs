@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Archivos
 {
-    interface IArchivo<T>
+    public interface IArchivo<T>
     {
         #region Methods
         bool Guardar(string archivo, T datos);
-        bool Leer(string archivo, T datos);
+        bool Leer(string archivo, out T datos);
         #endregion
     }
 }
