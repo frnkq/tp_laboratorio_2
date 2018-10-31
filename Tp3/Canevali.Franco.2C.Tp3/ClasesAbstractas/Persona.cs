@@ -105,7 +105,8 @@ namespace ClasesAbstractas
         public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad) 
             : this(nombre, apellido, nacionalidad)
         {
-            this.DNI = dni;
+
+                this.DNI = dni;
         }
 
         /// <summary>
@@ -118,7 +119,8 @@ namespace ClasesAbstractas
         public Persona(string nombre, string apellido, string dni, ENacionalidad nacionalidad)
             : this(nombre, apellido, nacionalidad)
         {
-            this.StringToDni = dni;
+                this.StringToDni = dni;
+
         }
 
         /// <summary>
@@ -152,10 +154,10 @@ namespace ClasesAbstractas
             ///Se verifica el rango del dni de acuerdo a nacionalidad Exranjera
             if (nacionalidad == Persona.ENacionalidad.Extranjero)
             {
-                if (dni >= 90000000 && dni <= 99999999)
-                    return dni;
+                if (dato >= 90000000 && dato <= 99999999)
+                    return dato;
             }
-            throw new NacionalidadInvalidaException();
+            throw new NacionalidadInvalidaException("Nacionalidad invalida");
         }
 
         /// <summary>
@@ -175,13 +177,13 @@ namespace ClasesAbstractas
             ///Se descarta que dato tenga algún caracter que no es un dígito
             foreach (char c in dato)
                 if (!(char.IsDigit(c)))
-                    throw new DniInvalidoException();
+                    throw new DniInvalidoException("Dni invalido");
             
             ///Se descarta que dato no pueda ser parseado a int
             int dni;
             if(!(int.TryParse(dato, out dni)))
             {
-                throw new DniInvalidoException();
+                throw new DniInvalidoException("Dni invalido");
             }
             else
             {
@@ -199,7 +201,7 @@ namespace ClasesAbstractas
             foreach(char c in dato)
             {
 
-                if (!(char.IsLetter(c)) && !(char.IsPunctuation(c)) && !(char.IsWhiteSpace(c))
+                if (!(char.IsLetter(c)) && !(char.IsPunctuation(c)) && !(char.IsWhiteSpace(c)))
                     return "";                    
             }
             return dato;

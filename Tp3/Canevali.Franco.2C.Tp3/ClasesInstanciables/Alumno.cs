@@ -11,7 +11,7 @@ namespace ClasesInstanciables
     {
         #region Campos
         Universidad.EClases claseQueToma;
-        Alumno.EEstadoDeCuenta estadoCuenta;
+        Alumno.EEstadoCuenta estadoCuenta;
         #endregion
 
         #region Metodos
@@ -27,9 +27,9 @@ namespace ClasesInstanciables
             this.claseQueToma = claseQueToma;
         }
 
-        Alumno(int id, string nombre,
+        public Alumno(int id, string nombre,
            string apellido, string dni,
-           Persona.ENacionalidad nacionalidad, Universidad.EClases claseQueToma, EEstadoDeCuenta estadoCuenta)
+           Persona.ENacionalidad nacionalidad, Universidad.EClases claseQueToma, EEstadoCuenta estadoCuenta)
             :this(id, nombre, apellido, dni, nacionalidad, claseQueToma)
         {
             this.estadoCuenta = estadoCuenta;
@@ -51,9 +51,10 @@ namespace ClasesInstanciables
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Alumno");
+            sb.AppendLine("--->Alumno");
             sb.AppendLine(base.MostrarDatos());
-            sb.AppendLine(this.ToString());
+            sb.AppendLine(String.Format("Clase que toma: {0}", this.claseQueToma.ToString()));
+            sb.AppendLine(String.Format("Estado de cuenta: {0}", this.estadoCuenta.ToString()));
             return sb.ToString();
         }
 
@@ -63,10 +64,8 @@ namespace ClasesInstanciables
         /// <returns>Todos los datos del alumno en un string</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(String.Format("Clase que toma: {0}", this.claseQueToma.ToString()));
-            sb.AppendLine(String.Format("Estado de cuenta: {0}", this.estadoCuenta.ToString()));
-            return sb.ToString();
+            
+            return this.MostrarDatos();
         }
 
         /// <summary>
@@ -78,7 +77,7 @@ namespace ClasesInstanciables
         public static bool operator ==(Alumno a, Universidad.EClases clase)
         {
             if(a.claseQueToma == clase && 
-                a.estadoCuenta != Alumno.EEstadoDeCuenta.Deudor)
+                a.estadoCuenta != Alumno.EEstadoCuenta.Deudor)
             {
                 return true;
             }
@@ -99,7 +98,7 @@ namespace ClasesInstanciables
 
 
         #region Tipos Anidados
-        public enum EEstadoDeCuenta
+        public enum EEstadoCuenta
         {
             AlDia,
             Deudor,

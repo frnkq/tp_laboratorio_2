@@ -18,7 +18,9 @@ namespace ClasesInstanciables
         /// Constructor por defecto que se utilizara para inicializar la Queue clasesDelDia y Random random.
         /// Ejecutará el método _randomClases para popular 
         /// </summary>
-        private Profesor()
+        /// 
+        ///TODO private and public constructors??
+        public Profesor()
         {
             clasesDelDia = new Queue<Universidad.EClases>();
             random = new Random();
@@ -37,7 +39,9 @@ namespace ClasesInstanciables
             string apellido, string dni, Persona.ENacionalidad nacionalidad)
             :base(id, nombre, apellido, dni, nacionalidad)
         {
-
+            clasesDelDia = new Queue<Universidad.EClases>();
+            random = new Random();
+            this._randomClases();
         }
 
         /// <summary>
@@ -47,6 +51,7 @@ namespace ClasesInstanciables
         {
             //no utilizo for porque son solo dos veces?
             this.clasesDelDia.Enqueue((Universidad.EClases)random.Next(3));
+            System.Threading.Thread.Sleep(500);
             this.clasesDelDia.Enqueue((Universidad.EClases)random.Next(3));
         }
 
@@ -72,9 +77,9 @@ namespace ClasesInstanciables
         protected override string MostrarDatos()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Profesor");
+            sb.AppendLine("-->Profesor");
             sb.AppendLine(base.MostrarDatos());
-            sb.AppendLine(this.ToString());
+            sb.AppendLine(this.ParticiparEnClase());
             return sb.ToString();
         }
 
@@ -84,9 +89,7 @@ namespace ClasesInstanciables
         /// <returns>Todos los datos del profesor</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(this.ParticiparEnClase());
-            return sb.ToString();
+            return this.MostrarDatos();
         }
 
 

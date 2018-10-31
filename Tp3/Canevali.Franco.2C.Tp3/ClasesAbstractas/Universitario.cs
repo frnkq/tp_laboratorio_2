@@ -31,7 +31,7 @@ namespace ClasesAbstractas
         /// <param name="nacionalidad">Nacionalidad a establecer en el campo base.nacionalidad</param>
         public Universitario(int legajo, string nombre,
             string apellido, string dni, ENacionalidad nacionalidad)
-            :base(nombre, apellido, nacionalidad)
+            :base(nombre, apellido, dni, nacionalidad)
         {
             this.legajo = legajo;
         }
@@ -46,7 +46,6 @@ namespace ClasesAbstractas
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
             sb.AppendLine(String.Format("Legajo n°: {0}", this.legajo));
-
             return sb.ToString();
         }
 

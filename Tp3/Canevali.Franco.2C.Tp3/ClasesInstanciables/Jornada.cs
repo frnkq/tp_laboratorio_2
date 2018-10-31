@@ -65,24 +65,26 @@ namespace ClasesInstanciables
         /// </summary>
         /// <param name="clase">Clase a la cual correspondera la jornada</param>
         /// <param name="instructor">Profesor al cual correspondera la jornada</param>
-        public Jornada(Universidad.EClases clase, Profesor instructor)
+        public Jornada(Universidad.EClases clase, Profesor instructor) : this()
         {
             this.clase = clase;
             this.instructor = instructor;
         }
+
         /// <summary>
-        /// Guardará los datos de la Jornada en un archivo de texto
+        /// Guardará los datos de la Jornada en un archivo de texto nombrado con la clase correspondiente a la jornada,
+        /// en el escritorio.
         /// </summary>
         /// <param name="jornada">Jornada a guardar en archivo de texto</param>
         /// <returns>true si pudo guardar, false de lo contrario</returns>
-        public bool Guardar(Jornada jornada)
+        public static bool Guardar(Jornada jornada)
         {
             Texto texto = new Texto();
             string fileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
-                              "\\" + this.clase.ToString() + ".txt";
+                              "\\" + jornada.clase.ToString() + ".txt";
             try
             {
-                texto.Guardar(fileName, this.ToString());
+                texto.Guardar(fileName, jornada.ToString());
                 return true;
             }catch(Exception e)
             {
@@ -91,10 +93,27 @@ namespace ClasesInstanciables
             }
                 
         }
-        
+
+        /// <summary>
+        /// Leerá los datos de la Jornada de un archivo de texto nombrado con la clase correspondiente a la jornada,
+        /// en el escritorio.
+        /// </summary>
+        /// <returns>Retornará los datos de la Jornada como texto.</returns>
         public string Leer()
         {
-            return "";
+            Texto texto = new Texto();
+            string fileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
+                              "\\" + this.clase.ToString() + ".txt";
+            string data = "";
+            try
+            {
+                texto.Leer(fileName, out data);
+            }
+            catch (Exception e)
+            {
+                //TODO no Exception?
+            }
+            return data;
         }
 
         /// <summary>
@@ -104,14 +123,16 @@ namespace ClasesInstanciables
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Jornada");
-            sb.AppendLine("Clase: " + this.clase.ToString());
+            sb.AppendLine("->Jornada");
+            sb.AppendLine("-->Clase: " + this.clase.ToString());
+            sb.AppendLine(this.instructor.ToString());
             sb.AppendLine("Alumnos: ");
             foreach(Alumno al in this.alumnos)
             {
                 ///TODO tostring(), mostrardatos()??
                 sb.AppendLine(al.ToString());
             }
+
             return sb.ToString();
         }
 
