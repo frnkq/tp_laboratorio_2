@@ -81,7 +81,7 @@ namespace ClasesInstanciables
         {
             Texto texto = new Texto();
             string fileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
-                              "\\" + jornada.clase.ToString() + ".txt";
+                              "\\FrancoCanevali.Tp3.jornada.txt";
             try
             {
                 texto.Guardar(fileName, jornada.ToString());
@@ -99,11 +99,11 @@ namespace ClasesInstanciables
         /// en el escritorio.
         /// </summary>
         /// <returns>Retornará los datos de la Jornada como texto.</returns>
-        public string Leer()
+        public static string Leer()
         {
             Texto texto = new Texto();
             string fileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
-                              "\\" + this.clase.ToString() + ".txt";
+                              "\\FrancoCanevali.Tp3.jornada.txt";
             string data = "";
             try
             {
@@ -132,7 +132,7 @@ namespace ClasesInstanciables
                 ///TODO tostring(), mostrardatos()??
                 sb.AppendLine(al.ToString());
             }
-
+            sb.AppendLine("---------------");
             return sb.ToString();
         }
 

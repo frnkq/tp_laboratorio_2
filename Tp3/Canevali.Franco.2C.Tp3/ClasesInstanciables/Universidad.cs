@@ -82,8 +82,18 @@ namespace ClasesInstanciables
         public static bool Guardar(Universidad uni)
         {
             Xml<Universidad> xml = new Xml<Universidad>();
-            xml.Guardar("myfile.xml", uni);
-            return false;
+            string fileName = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
+                             "\\FrancoCanevali.Tp3.universidad.cs";
+            try
+            {
+                xml.Guardar(fileName, uni);
+            }
+            catch(Exception e)
+            { 
+                ///TODO throw exception?
+                return false;
+            }
+            return true;
         }
         private string MostrarDatos(Universidad uni)
         {
@@ -179,7 +189,7 @@ namespace ClasesInstanciables
                 if (prof != clase)
                     return prof;
 
-            throw new SinProfesorException();
+            throw new SinProfesorException("Jornada sin profesor");
         }
 
         /// <summary>
@@ -195,16 +205,21 @@ namespace ClasesInstanciables
             Profesor profesor = new Profesor();
             Jornada jornada;
 
-            //Agrego al profesor que corresponda a la clase
+            //Agrego al profesor que corresponda a la clase o tiro exception
+            bool profesorAdded = false;
             foreach(Profesor prof in g.profesores)
             {
                 if(prof == clase)
                 {
                     profesor = prof;
                     g += prof;
+                    profesorAdded = true;
                     break;
                 }
             }
+
+            if (!profesorAdded)
+                throw new SinProfesorException("Jornada sin profesor");
             
             //Creo una jornada con esa clase y ese profesor
             jornada = new Jornada(clase, profesor);
