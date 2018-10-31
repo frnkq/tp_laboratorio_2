@@ -10,7 +10,7 @@ namespace ClasesInstanciables
     {
         #region Campos
         private Queue<Universidad.EClases> clasesDelDia;
-        private Random random;
+        private static Random random;
         #endregion
 
         #region Metodos
@@ -19,12 +19,15 @@ namespace ClasesInstanciables
         /// Ejecutará el método _randomClases para popular 
         /// </summary>
         /// 
-        ///TODO private and public constructors??
-        public Profesor()
+        
+        static Profesor()
         {
-            clasesDelDia = new Queue<Universidad.EClases>();
             random = new Random();
-            this._randomClases();
+        }
+      
+        private Profesor()
+        {
+            
         }
 
         /// <summary>
@@ -40,7 +43,6 @@ namespace ClasesInstanciables
             :base(id, nombre, apellido, dni, nacionalidad)
         {
             clasesDelDia = new Queue<Universidad.EClases>();
-            random = new Random();
             this._randomClases();
         }
 

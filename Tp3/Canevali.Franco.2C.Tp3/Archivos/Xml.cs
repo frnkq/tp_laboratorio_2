@@ -12,7 +12,6 @@ namespace Archivos
     {
         public bool Guardar(string archivo, T datos)
         {
-            
             XmlWriter xmlWriter = XmlWriter.Create(archivo);
             XmlSerializer ser = new XmlSerializer(typeof(T));
             try

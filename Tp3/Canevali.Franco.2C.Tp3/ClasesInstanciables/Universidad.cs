@@ -174,7 +174,7 @@ namespace ClasesInstanciables
                 if (prof == clase)
                     return prof;
 
-            throw new SinProfesorException();
+            throw new SinProfesorException("Clase sin profesor");
         }
 
         /// <summary>
@@ -202,23 +202,32 @@ namespace ClasesInstanciables
         /// <returns></returns>
         public static Universidad operator +(Universidad g, EClases clase)
         {
-            Profesor profesor = new Profesor();
+            Profesor profesor;
             Jornada jornada;
 
-            //Agrego al profesor que corresponda a la clase o tiro exception
-            bool profesorAdded = false;
-            foreach(Profesor prof in g.profesores)
+            try
             {
-                if(prof == clase)
-                {
-                    profesor = prof;
-                    g += prof;
-                    profesorAdded = true;
-                    break;
-                }
+                profesor = g == clase;
             }
+            catch (SinProfesorException e)
+            {
+                //TODO don't use exception
+                throw e;
+            }
+            //Agrego al profesor que corresponda a la clase o tiro exception
+            //bool profesorAdded = false;
+            //foreach(Profesor prof in g.profesores)
+            //{
+            //    if(prof == clase)
+            //    {
+            //        profesor = prof;
+            //        g += prof;
+            //        profesorAdded = true;
+            //        break;
+            //    }
+            //}
 
-            if (!profesorAdded)
+            if (profesor is null)
                 throw new SinProfesorException("Jornada sin profesor");
             
             //Creo una jornada con esa clase y ese profesor
@@ -235,7 +244,7 @@ namespace ClasesInstanciables
             }
 
             //Agrego la jornada a la universidad
-            g.jornada.Add(jornada);
+            g.Jornadas.Add(jornada);
 
             return g;
         }
