@@ -15,6 +15,9 @@ namespace ClasesInstanciables
         #endregion
 
         #region Propiedades
+        /// <summary>
+        /// Propiedad Read/Write de la lista this.alumnos
+        /// </summary>
         public List<Alumno> Alumnos
         {
             get
@@ -27,6 +30,9 @@ namespace ClasesInstanciables
             }
         }
 
+        /// <summary>
+        /// Propiedad Read/Write de this.clase
+        /// </summary>
         public Universidad.EClases Clase
         {
             get
@@ -39,6 +45,9 @@ namespace ClasesInstanciables
             }
         }
 
+        /// <summary>
+        /// Propiedad read/write de this.instructor
+        /// </summary>
         public Profesor Instructor
         {
             get
@@ -88,7 +97,6 @@ namespace ClasesInstanciables
                 return true;
             }catch(Exception e)
             {
-                ///TODO throw exception?
                 return false;
             }
                 
@@ -111,7 +119,6 @@ namespace ClasesInstanciables
             }
             catch (Exception e)
             {
-                //TODO no Exception?
             }
             return data;
         }
@@ -129,7 +136,6 @@ namespace ClasesInstanciables
             sb.AppendLine("Alumnos: ");
             foreach(Alumno al in this.alumnos)
             {
-                ///TODO tostring(), mostrardatos()??
                 sb.AppendLine(al.ToString());
             }
             sb.AppendLine("---------------");

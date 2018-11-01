@@ -209,6 +209,9 @@ namespace ClasesAbstractas
         #endregion
 
         #region Tipos anidados
+        /// <summary>
+        /// Nacionalidades disponibles para Persona y sus derivados
+        /// </summary>
         public enum ENacionalidad
         {
             Argentino,

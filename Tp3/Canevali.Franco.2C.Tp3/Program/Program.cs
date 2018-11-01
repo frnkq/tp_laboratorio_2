@@ -13,14 +13,6 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            //TODO tests unitarios
-            //Generar al menos dos test unitario que validen Excepciones
-            //Generar al menos uno que valide un valor numérico
-            //Generar al menos uno que valide que no haya valores nulos en algún atributo de las clases dadas.
-
-            //TODO excepciones con mensajes
-            //TODO check serialization for Universidad (xmltextwriter not appearing)
-            //TODO multiple constructors on profesor?
             //TODO revisar todo
 
             Universidad gim = new Universidad();

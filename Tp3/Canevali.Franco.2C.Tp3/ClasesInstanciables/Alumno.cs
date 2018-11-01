@@ -15,11 +15,23 @@ namespace ClasesInstanciables
         #endregion
 
         #region Metodos
+        /// <summary>
+        /// Constructor por defecto de Alumno
+        /// </summary>
         public Alumno()
         {
 
         }
 
+        /// <summary>
+        /// Constructor de Alumno que establece el id, nombre, apellido, dni, nacionalidad, claseQueToma
+        /// </summary>
+        /// <param name="id">Id a establecer en base.legajo</param>
+        /// <param name="nombre">Nombre a establecer en base.nombre</param>
+        /// <param name="apellido">Apellido a establecer en base.apellido</param>
+        /// <param name="dni">Dni a establecer en base.dni</param>
+        /// <param name="nacionalidad">Nacionalidad a establecer en base.nacionalidad</param>
+        /// <param name="claseQueToma">Clase a establecer en this.claseQueToma</param>
         public Alumno(int id, string nombre, 
             string apellido, string dni, Persona.ENacionalidad nacionalidad, Universidad.EClases claseQueToma)
             :base(id, nombre, apellido, dni, nacionalidad)
@@ -27,6 +39,16 @@ namespace ClasesInstanciables
             this.claseQueToma = claseQueToma;
         }
 
+        /// <summary>
+        /// Constructor de Alumno que establece el id, nombre, apellido, dni, nacionalidad, claseQueToma
+        /// </summary>
+        /// <param name="id">Id a establecer en base.legajo</param>
+        /// <param name="nombre">Nombre a establecer en base.nombre</param>
+        /// <param name="apellido">Apellido a establecer en base.apellido</param>
+        /// <param name="dni">Dni a establecer en base.dni</param>
+        /// <param name="nacionalidad">Nacionalidad a establecer en base.nacionalidad</param>
+        /// <param name="claseQueToma">Clase a establecer en this.claseQueToma</param>
+        /// <param name="estadoCuenta">Estado de cuenta a establecer en this.estadoCuenta</param>
         public Alumno(int id, string nombre,
            string apellido, string dni,
            Persona.ENacionalidad nacionalidad, Universidad.EClases claseQueToma, EEstadoCuenta estadoCuenta)
@@ -98,6 +120,9 @@ namespace ClasesInstanciables
 
 
         #region Tipos Anidados
+        /// <summary>
+        /// Estados de cuenta disponibles para Alumno
+        /// </summary>
         public enum EEstadoCuenta
         {
             AlDia,
