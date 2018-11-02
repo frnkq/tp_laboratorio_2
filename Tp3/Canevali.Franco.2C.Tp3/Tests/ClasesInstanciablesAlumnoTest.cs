@@ -25,16 +25,10 @@ namespace Tests
         [TestMethod]
         public void TestSetInvalidDni()
         {
-            try
-            {
-                alumno = new Alumno(1, "nombre", "apellido",
+            alumno = new Alumno(1, "nombre", "apellido",
                     validDni, ClasesAbstractas.Persona.ENacionalidad.Argentino,
                     Universidad.EClases.SPD);
-            }
-            catch (DniInvalidoException)
-            {
 
-            }
             try
             {
                 alumno.StringToDni = invalidDni;
