@@ -148,7 +148,7 @@ namespace ClasesInstanciables
         /// <returns>True si el alumno se encuentra en la universidad, false de lo contrario</returns>
         public static bool operator ==(Universidad g, Alumno a)
         {
-            foreach (Alumno al in g.alumnos)
+            foreach (Alumno al in g.Alumnos)
                 if (al == a)
                     return true;
 
@@ -174,7 +174,7 @@ namespace ClasesInstanciables
         /// <returns>True si el profesor se encuentra en la lista profesores, false de lo contrario</returns>
         public static bool operator ==(Universidad g, Profesor i)
         {
-            foreach (Profesor prof in g.profesores)
+            foreach (Profesor prof in g.Instructores)
                 if (prof == i)
                     return true;
             return false;
@@ -200,7 +200,7 @@ namespace ClasesInstanciables
         /// <returns>El primer profesor capaz de dar la clase si existe</returns>
         public static Profesor operator ==(Universidad u, EClases clase)
         {
-            foreach (Profesor prof in u.profesores)
+            foreach (Profesor prof in u.Instructores)
                 if (prof == clase)
                     return prof;
 
@@ -215,7 +215,7 @@ namespace ClasesInstanciables
         /// <returns>El primer profesor capaz de dar la clase si existe</returns>
         public static Profesor operator !=(Universidad u, EClases clase)
         {
-            foreach (Profesor prof in u.profesores)
+            foreach (Profesor prof in u.Instructores)
                 if (prof != clase)
                     return prof;
 
@@ -249,12 +249,11 @@ namespace ClasesInstanciables
             jornada = new Jornada(clase, profesor);
 
             //Agrego los alumnos a la jornada y a la universidad
-            foreach(Alumno al in g.alumnos)
+            foreach(Alumno al in g.Alumnos)
             {
                 if(al == clase)
                 {
                     jornada += al;
-                    g += al;
                 }
             }
 
@@ -274,7 +273,7 @@ namespace ClasesInstanciables
         {
             if(u != a)
             {
-                u.alumnos.Add(a);
+                u.Alumnos.Add(a);
             }
 
             return u;
@@ -290,7 +289,7 @@ namespace ClasesInstanciables
         {
             if(u != i)
             {
-                u.profesores.Add(i);
+                u.Instructores.Add(i);
             }
             return u;
         }

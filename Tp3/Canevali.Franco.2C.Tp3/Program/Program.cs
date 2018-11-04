@@ -13,8 +13,6 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            //TODO revisar todo
-
             Universidad gim = new Universidad();
             Alumno a1 = new Alumno(1, "Juan", "Lopez", "12234456", 
                 EntidadesAbstractas.Persona.ENacionalidad.Argentino, 
