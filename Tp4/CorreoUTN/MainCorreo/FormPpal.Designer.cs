@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstEstadoEntregado = new System.Windows.Forms.ListBox();
+            this.MostrarToolstripMenuItem = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mostrarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.lblEstadoEntregado = new System.Windows.Forms.Label();
             this.lstEstadoEnViaje = new System.Windows.Forms.ListBox();
             this.lblEstadoEnViaje = new System.Windows.Forms.Label();
@@ -44,6 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblTrackingID = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.MostrarToolstripMenuItem.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,23 +61,39 @@
             this.groupBox1.Controls.Add(this.lblEstadoIngresado);
             this.groupBox1.Location = new System.Drawing.Point(4, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(964, 282);
+            this.groupBox1.Size = new System.Drawing.Size(814, 282);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estado Paquetes";
             // 
             // lstEstadoEntregado
             // 
+            this.lstEstadoEntregado.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
+            this.lstEstadoEntregado.ContextMenuStrip = this.MostrarToolstripMenuItem;
             this.lstEstadoEntregado.FormattingEnabled = true;
-            this.lstEstadoEntregado.Location = new System.Drawing.Point(690, 60);
+            this.lstEstadoEntregado.Location = new System.Drawing.Point(550, 60);
             this.lstEstadoEntregado.Name = "lstEstadoEntregado";
             this.lstEstadoEntregado.Size = new System.Drawing.Size(253, 199);
             this.lstEstadoEntregado.TabIndex = 0;
             // 
+            // MostrarToolstripMenuItem
+            // 
+            this.MostrarToolstripMenuItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mostrarToolStripMenuItem1});
+            this.MostrarToolstripMenuItem.Name = "MostrarToolstripMenuItem";
+            this.MostrarToolstripMenuItem.Size = new System.Drawing.Size(125, 26);
+            // 
+            // mostrarToolStripMenuItem1
+            // 
+            this.mostrarToolStripMenuItem1.Name = "mostrarToolStripMenuItem1";
+            this.mostrarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.mostrarToolStripMenuItem1.Text = "Mostrar...";
+            this.mostrarToolStripMenuItem1.Click += new System.EventHandler(this.mostrarToolStripMenuItem1_Click);
+            // 
             // lblEstadoEntregado
             // 
             this.lblEstadoEntregado.AutoSize = true;
-            this.lblEstadoEntregado.Location = new System.Drawing.Point(687, 32);
+            this.lblEstadoEntregado.Location = new System.Drawing.Point(547, 32);
             this.lblEstadoEntregado.Name = "lblEstadoEntregado";
             this.lblEstadoEntregado.Size = new System.Drawing.Size(56, 13);
             this.lblEstadoEntregado.TabIndex = 1;
@@ -82,7 +102,7 @@
             // lstEstadoEnViaje
             // 
             this.lstEstadoEnViaje.FormattingEnabled = true;
-            this.lstEstadoEnViaje.Location = new System.Drawing.Point(361, 60);
+            this.lstEstadoEnViaje.Location = new System.Drawing.Point(286, 60);
             this.lstEstadoEnViaje.Name = "lstEstadoEnViaje";
             this.lstEstadoEnViaje.Size = new System.Drawing.Size(253, 199);
             this.lstEstadoEnViaje.TabIndex = 0;
@@ -90,7 +110,7 @@
             // lblEstadoEnViaje
             // 
             this.lblEstadoEnViaje.AutoSize = true;
-            this.lblEstadoEnViaje.Location = new System.Drawing.Point(358, 32);
+            this.lblEstadoEnViaje.Location = new System.Drawing.Point(283, 32);
             this.lblEstadoEnViaje.Name = "lblEstadoEnViaje";
             this.lblEstadoEnViaje.Size = new System.Drawing.Size(46, 13);
             this.lblEstadoEnViaje.TabIndex = 1;
@@ -117,14 +137,14 @@
             // 
             this.rtbMostrar.Location = new System.Drawing.Point(4, 291);
             this.rtbMostrar.Name = "rtbMostrar";
-            this.rtbMostrar.Size = new System.Drawing.Size(544, 172);
+            this.rtbMostrar.Size = new System.Drawing.Size(387, 172);
             this.rtbMostrar.TabIndex = 2;
             this.rtbMostrar.Text = "";
             // 
             // mtxtTrackingId
             // 
             this.mtxtTrackingId.Location = new System.Drawing.Point(17, 42);
-            this.mtxtTrackingId.Mask = "AAAA-AAAA-AAAA-AAAA";
+            this.mtxtTrackingId.Mask = "000-000-0000";
             this.mtxtTrackingId.Name = "mtxtTrackingId";
             this.mtxtTrackingId.Size = new System.Drawing.Size(221, 20);
             this.mtxtTrackingId.TabIndex = 3;
@@ -137,6 +157,7 @@
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnMostrarTodos
             // 
@@ -146,6 +167,7 @@
             this.btnMostrarTodos.TabIndex = 2;
             this.btnMostrarTodos.Text = "Mostrar todos";
             this.btnMostrarTodos.UseVisualStyleBackColor = true;
+            this.btnMostrarTodos.Click += new System.EventHandler(this.btnMostrarTodos_Click);
             // 
             // groupBox2
             // 
@@ -155,7 +177,7 @@
             this.groupBox2.Controls.Add(this.txtDireccion);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.lblTrackingID);
-            this.groupBox2.Location = new System.Drawing.Point(554, 288);
+            this.groupBox2.Location = new System.Drawing.Point(397, 302);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(410, 161);
             this.groupBox2.TabIndex = 5;
@@ -191,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 475);
+            this.ClientSize = new System.Drawing.Size(825, 478);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.rtbMostrar);
             this.Controls.Add(this.groupBox1);
@@ -199,6 +221,7 @@
             this.Text = "CorreoUTN Franco.Canevali.2C";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.MostrarToolstripMenuItem.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -222,6 +245,8 @@
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTrackingID;
+        private System.Windows.Forms.ContextMenuStrip MostrarToolstripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mostrarToolStripMenuItem1;
     }
 }
 

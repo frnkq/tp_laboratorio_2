@@ -13,12 +13,28 @@ namespace Entidades
 
         static PaqueteDAO()
         {
-
+            string connectionString = "Data Source=.\\SQLEXPRESS; Initial Catalog=correo-sp-2017; Integrated Security=True;";
+            _conexion = new SqlConnection(connectionString);
+            _conexion.Open();
         }
 
-        public static bool Insertar()
+        public static bool Insertar(Paquete p)
         {
-            return false;
+            try
+            {
+                var alumno = "Franco Canevali";
+                string insertCommand = String.Format("INSERT INTO Paquetes (direccionEntrega,trackingID,alumno) " +
+                                        "VALUES('{0}','{1}','{2}')", 
+                                        p.DireccionEntrega, p.TrackingId, alumno);
+                _comando = new SqlCommand(insertCommand, _conexion);
+                _comando.ExecuteNonQuery();
+                ///TODO: cuando cierro conexion?
+                return true;
+            }catch(Exception e)
+            {
+                throw e;
+            }
+
         }
 
       
