@@ -19,6 +19,7 @@ namespace MainCorreo
             InitializeComponent();
             this.correo = new Correo();
             this.rtbMostrar.Enabled = false;
+
         }
 
         /// <summary>
@@ -31,12 +32,12 @@ namespace MainCorreo
         /// <param name="e"></param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            string trackingId = this.mtxtTrackingId.Text;
-            string direccion = this.txtDireccion.Text;
-            Paquete paquete = new Paquete(direccion, trackingId);
+            Paquete paquete = new Paquete(this.mtxtTrackingId.Text, this.txtDireccion.Text);
 
+            
             paquete.InformaEstado += paq_InformaEstado;
             paquete.ErrorBaseDeDatos += paq_ErrorBaseDeDatos;
+
             try
             {
                 correo += paquete;
@@ -45,12 +46,9 @@ namespace MainCorreo
             {
                 MessageBox.Show(ex.Message, "Paquete repetido");
             }
-            catch(Exception exx)
-            {
-                MessageBox.Show("omg");
-            }
-            this.mtxtTrackingId.Clear();
 
+            this.mtxtTrackingId.Clear();
+            this.txtDireccion.Clear();
         }
 
         /// <summary>
@@ -129,12 +127,18 @@ namespace MainCorreo
         /// <param name="sender"></param>
         public void NotificarErrorBaseDeDatos(object sender)
         {
-            string error = ((Exception)sender).Message;
-            MessageBox.Show("Hubo un error en la base de datos:\n\n" + error, "Error en la base de datos");
+            string trackingPaquete = (((Dictionary<Paquete, Exception>)sender).First()).Key.TrackingId;
+            string error = (((Dictionary<Paquete, Exception>)sender).First()).Value.Message;
+
+            string formatedError = String.Format("Hubo un error a la hora de insertar el paquete trackingID: '{0}' en la base de datos: \n\n {1}",
+                trackingPaquete, error);
+
+            MessageBox.Show(formatedError, "Problema con la base de datos");
         }
 
         /// <summary>
         /// Imprime la informacion de todos los paquetes de la lista this.correo.Paquetes en this.rtbMostrar
+        /// y guarda dicha informacion en un archivo mediante el metodo de extension Entidades.GuardaString()
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="elementos">Correo del cual se espera obtener la lista de paquetes</param>
@@ -145,18 +149,17 @@ namespace MainCorreo
             {
                 Correo correo = (Correo)elementos;
                 StringBuilder sb = new StringBuilder();
+
                 foreach (Paquete p in correo.Paquetes)
                 {
                     string datos = String.Format("{0} ({1})", p.ToString(), p.Estado.ToString());
-                    sb.AppendLine(String.Format("{0} ({1})", p.ToString(), p.Estado.ToString()));
-                    //TODO: test this
-                    //TODO: review everything and comment
+
+                    sb.AppendLine(datos);
+
                     datos.Guardar("salida.txt");
                 }
-                this.rtbMostrar.Text = sb.ToString();
 
-                
-                
+                this.rtbMostrar.Text = sb.ToString();
             }
         }
 
