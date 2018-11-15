@@ -28,11 +28,16 @@ namespace Entidades
                                         p.DireccionEntrega, p.TrackingId, alumno);
                 _comando = new SqlCommand(insertCommand, _conexion);
                 _comando.ExecuteNonQuery();
-                ///TODO: cuando cierro conexion?
                 return true;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 throw e;
+            }
+            finally
+            {
+                if (_conexion != null)
+                    _conexion.Close();
             }
 
         }

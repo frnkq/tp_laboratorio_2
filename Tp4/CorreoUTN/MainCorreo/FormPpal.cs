@@ -147,11 +147,16 @@ namespace MainCorreo
                 StringBuilder sb = new StringBuilder();
                 foreach (Paquete p in correo.Paquetes)
                 {
+                    string datos = String.Format("{0} ({1})", p.ToString(), p.Estado.ToString());
                     sb.AppendLine(String.Format("{0} ({1})", p.ToString(), p.Estado.ToString()));
+                    //TODO: test this
+                    //TODO: review everything and comment
+                    datos.Guardar("salida.txt");
                 }
                 this.rtbMostrar.Text = sb.ToString();
 
-                //TODO: Utilizará el método de extensión para guardar los datos en un archivo llamado salida.txt.
+                
+                
             }
         }
 
